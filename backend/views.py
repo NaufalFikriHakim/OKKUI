@@ -92,3 +92,55 @@ class PembicaraUpdateDeleteAPIView(APIView):
         pembicara = self.get_object(pk)
         pembicara.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class PengurusIntiListCreateAPIView(APIView):
+    def get(self, request):
+        pengurusintis = PengurusInti.objects.all()
+        serializer = PengurusIntiSerializer(pengurusintis, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = PengurusIntiSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PengurusIntiRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return PengurusInti.objects.get(pk=pk)
+        except PengurusInti.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        pengurusinti = self.get_object(pk)
+        serializer = PengurusIntiSerializer(pengurusinti)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        pengurusinti = self.get_object(pk)
+        serializer = PengurusIntiSerializer(pengurusinti, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        pengurusinti = self.get_object(pk)
+        pengurusinti.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class DivisiListAPIView(APIView):
+    def get(self, request):
+        divisis = Divisi.objects.all()
+        serializer = DivisiSerializer(divisis, many=True)
+        return Response(serializer.data)
+
+class DivisiCreateAPIView(APIView):
+    def post(self, request):
+        serializer = DivisiSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
