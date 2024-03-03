@@ -222,3 +222,144 @@ class BPHRetrieveUpdateDestroyAPIView(APIView):
         bph = self.get_object(pk)
         bph.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class KelompokListAPIView(APIView):
+    def get(self, request):
+        kelompoks = Kelompok.objects.all()
+        serializer = KelompokSerializer(kelompoks, many=True)
+        return Response(serializer.data)
+
+class KelompokCreateAPIView(APIView):
+    def post(self, request):
+        serializer = KelompokSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class KelompokDeleteAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Kelompok.objects.get(pk=pk)
+        except Kelompok.DoesNotExist:
+            return None
+
+    def delete(self, request, pk):
+        kelompok = self.get_object(pk)
+        kelompok.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class MentorListCreateAPIView(APIView):
+    def get(self, request, no_kelompok):
+        mentors = Mentor.objects.all().filter(kelompok=no_kelompok)
+        serializer = MentorSerializer(mentors, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, no_kelompok):
+        request.data["kelompol"]=no_kelompok
+        serializer = MentorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MentorRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Mentor.objects.get(pk=pk)
+        except Mentor.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        mentor = self.get_object(pk)
+        serializer = MentorSerializer(mentor)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        mentor = self.get_object(pk)
+        serializer = MentorSerializer(mentor, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        mentor = self.get_object(pk)
+        mentor.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class MenteeListCreateAPIView(APIView):
+    def get(self, request):
+        mentees = Mentee.objects.all()
+        serializer = MenteeSerializer(mentees, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = MenteeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MenteeRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Mentee.objects.get(pk=pk)
+        except Mentee.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        mentee = self.get_object(pk)
+        serializer = MenteeSerializer(mentee)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        mentee = self.get_object(pk)
+        serializer = MenteeSerializer(mentee, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        mentee = self.get_object(pk)
+        mentee.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class MentoringListCreateAPIView(APIView):
+    def get(self, request):
+        mentorings = Mentoring.objects.all()
+        serializer = MentoringSerializer(mentorings, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = MentoringSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MentoringRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Mentoring.objects.get(pk=pk)
+        except Mentoring.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        mentoring = self.get_object(pk)
+        serializer = MentoringSerializer(mentoring)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        mentoring = self.get_object(pk)
+        serializer = MentoringSerializer(mentoring, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        mentoring = self.get_object(pk)
+        mentoring.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

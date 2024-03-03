@@ -36,14 +36,14 @@ class BPH(models.Model):
     nama = models.CharField(max_length=255)
     jabatan = models.CharField(max_length=255)
 
+class Kelompok(models.Model):
+    nomor = models.IntegerField(primary_key=True)
+
 class Mentor(models.Model):
     nama = models.CharField(max_length=255)
     angkatan = models.IntegerField()
     jurusan = models.CharField(max_length=255)
-
-class Kelompok(models.Model):
-    nomor = models.IntegerField(primary_key=True)
-    mentor = models.ForeignKey(Mentor, on_delete=models.CASCADE)
+    kelompok = models.ForeignKey(Kelompok, on_delete=models.CASCADE)
 
 class Mentee(models.Model):
     nama = models.CharField(max_length=255)
