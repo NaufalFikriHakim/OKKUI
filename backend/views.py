@@ -46,10 +46,7 @@ class SponsorUpdateDeleteAPIView(APIView):
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    def put(self, request, pk):
+    def delete(self, request, pk):
         sponsor = self.get_object(pk)
-        serializer = SponsorSerializer(sponsor, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        sponsor.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
