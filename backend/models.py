@@ -32,7 +32,7 @@ class Rapat(models.Model):
     kesimpulan = models.TextField()
 
 class BPH(models.Model):
-    bidang = models.ForeignKey(Divisi, on_delete=models.CASCADE)
+    divisi = models.ForeignKey(Divisi, on_delete=models.CASCADE)
     nama = models.CharField(max_length=255)
     jabatan = models.CharField(max_length=255)
 

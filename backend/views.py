@@ -144,3 +144,81 @@ class DivisiCreateAPIView(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class RapatListCreateAPIView(APIView):
+    def get(self, request, divisi_name):
+        rapats = Rapat.objects.all().filter(divisi=divisi_name)
+        serializer = RapatSerializer(rapats, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, divisi_name):
+        request.data["divisi"] = divisi_name
+        serializer = RapatSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class RapatRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Rapat.objects.get(pk=pk)
+        except Rapat.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        rapat = self.get_object(pk)
+        serializer = RapatSerializer(rapat)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        rapat = self.get_object(pk)
+        serializer = RapatSerializer(rapat, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        rapat = self.get_object(pk)
+        rapat.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+class BPHListCreateAPIView(APIView):
+    def get(self, request, divisi_name):
+        bphs = BPH.objects.all().filter(divisi=divisi_name)
+        serializer = BPHSerializer(bphs, many=True)
+        return Response(serializer.data)
+
+    def post(self, request, divisi_name):
+        request.data["divisi"] = divisi_name
+        serializer = BPHSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class BPHRetrieveUpdateDestroyAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return BPH.objects.get(pk=pk)
+        except BPH.DoesNotExist:
+            return None
+
+    def get(self, request, pk):
+        bph = self.get_object(pk)
+        serializer = BPHSerializer(bph)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        bph = self.get_object(pk)
+        serializer = BPHSerializer(bph, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        bph = self.get_object(pk)
+        bph.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
