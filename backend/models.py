@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Acara(models.Model):
-    nama = models.CharField(max_length=255, primary_key=True)
+    nama = models.CharField(max_length=255)
     tanggal = models.DateField()
     tempat = models.TextField()
 
@@ -18,17 +18,17 @@ class Pembicara(models.Model):
     acara = models.ForeignKey(Acara, on_delete=models.CASCADE)
 
 class PengurusInti(models.Model):
-    nama = models.CharField(max_lenght=255)
-    jabatan = models.CharField(max_lenght=255)
+    nama = models.CharField(max_length=255)
+    jabatan = models.CharField(max_length=255)
 
 class Divisi(models.Model):
-    nama = models.CharField(max_lenght=255)
+    nama = models.CharField(max_length=255)
 
 class Rapat(models.Model):
     divisi = models.ForeignKey(Divisi, on_delete=models.CASCADE)
     kehadiran = models.TextField()
     waktu = models.DateField()
-    tempat = models.CharField()
+    tempat = models.CharField(max_length=255)
     kesimpulan = models.TextField()
 
 class BPH(models.Model):
