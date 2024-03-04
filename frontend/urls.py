@@ -5,5 +5,6 @@ from .views import *
 app_name = 'backend'
 
 urlpatterns = [
-    path("", test)
+    path("", test),
+    path("acara/", acara)
 ]
