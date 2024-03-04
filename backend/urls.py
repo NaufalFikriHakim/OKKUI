@@ -7,6 +7,7 @@ app_name = 'backend'
 urlpatterns = [
     # URLs for AcaraAPIView
     path('acara/', AcaraAPIView.as_view()),
+    path('acara/<int:pk>/', AcaraUpdateDeleteAPIView.as_view()),
 
     # URLs for Sponsor
     path('sponsor/<int:acara_id>/', SponsorCreateReadAPIView.as_view()),

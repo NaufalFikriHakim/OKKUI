@@ -24,6 +24,26 @@ class AcaraAPIView(APIView):
         Acara.objects.all().delete()
         return Response(status=status.HTTP_200_OK)
     
+class AcaraUpdateDeleteAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Acara.objects.get(pk=pk)
+        except Acara.DoesNotExist:
+            return None
+
+    def put(self, request, pk):
+        acara = self.get_object(pk)
+        serializer = AcaraSerializer(acara, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def delete(self, request, pk):
+        acara = self.get_object(pk)
+        acara.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
 class SponsorCreateReadAPIView(APIView):
     def get(self, request, acara_id):
         sponsor = Sponsor.objects.all().filter(acara=acara_id)
@@ -152,7 +172,7 @@ class RapatListCreateAPIView(APIView):
         return Response(serializer.data)
 
     def post(self, request, divisi_name):
-        request.data["divisi"] = divisi_name
+        request.data["divisi"] = Divisi.objects.get(nama=divisi_name).id
         serializer = RapatSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -191,7 +211,7 @@ class BPHListCreateAPIView(APIView):
         return Response(serializer.data)
 
     def post(self, request, divisi_name):
-        request.data["divisi"] = divisi_name
+        request.data["divisi"] = Divisi.objects.get(nama=divisi_name).id
         serializer = BPHSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -256,7 +276,7 @@ class MentorListCreateAPIView(APIView):
         return Response(serializer.data)
 
     def post(self, request, no_kelompok):
-        request.data["kelompol"]=no_kelompok
+        request.data["kelompok"]=no_kelompok
         serializer = MentorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

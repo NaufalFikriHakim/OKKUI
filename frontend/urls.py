@@ -6,5 +6,6 @@ app_name = 'backend'
 
 urlpatterns = [
     path("", test),
-    path("acara/", acara)
+    path("api-call/", api_call),
+    path("api-list/", api_list)
 ]

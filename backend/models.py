@@ -10,8 +10,6 @@ class Sponsor(models.Model):
     nama = models.CharField(max_length=255)
     acara = models.ForeignKey(Acara, on_delete=models.CASCADE)
     tipe = models.CharField(max_length=255)
-    harga = models.IntegerField()
-    benefit = models.TextField()
 
 class Pembicara(models.Model):
     nama = models.CharField(max_length=255)

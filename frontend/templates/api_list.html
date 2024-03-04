@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center my-5">
+        <div class="card" style="width: 50rem;">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        acara/ <span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>POST Request Body</strong>
+                      
+                      <div class="card p-3">
+                        <p>
+                          {
+                            "nama": "Nama Acara",
+                            "tanggal": "2022-03-15",
+                            "tempat": "Tempat Acara"
+                        }
+                        
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        acara/&lt;int:pk&gt;/ <span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>PUT Request Body</strong>
+                      
+                      <div class="card p-3">
+                        <p>
+                          {
+                            "nama": "Nama Acara",
+                            "tanggal": "2022-03-15",
+                            "tempat": "Tempat Acara"
+                        }
+                        
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        sponsor/&lt;int:acara_id&gt;/ <span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body"><strong>POST Request Body</strong>
+                      
+                      <div class="card p-3">
+                        <p>
+                          {
+                            "nama": "Nama Sponsor",
+                            "acara": 1,  
+                            "tipe": "Tipe Sponsor"
+                        }
+                        </p>
+                      </div>
+                      
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        sponsor/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Sponsor",
+                              "acara": 1, 
+                              "tipe": "Tipe Sponsor"
+                          }
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        pembicara/&lt;int:acara_id&gt;/ <span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Pembicara",
+                              "acara": 1 
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        pembicara/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Pembicara",
+                              "acara": 1
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        pengurusinti/<span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Pengurus Inti",
+                              "jabatan": "Jabatan Pengurus Inti"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        pengurusinti/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Pengurus Inti",
+                              "jabatan": "Jabatan Pengurus Inti"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        divisi/<span class="badge text-bg-primary mx-3">GET</span> 
+                      </button>
+                    </h2>
+                    <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>no Request Body Needed</strong>
+                      
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        divisi/create/<span class="badge text-bg-success mx-3">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Divisi"
+                          }                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        rapat/&lt;str:divisi_name&gt;/<span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseEleven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "kehadiran": "Kehadiran Rapat",
+                              "waktu": "2022-03-15",
+                              "tempat": "Tempat Rapat",
+                              "kesimpulan": "Kesimpulan Rapat"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                        rapat/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwelve" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "divisi": 1,
+                              "kehadiran": "Kehadiran Rapat",
+                              "waktu": "2022-03-15",
+                              "tempat": "Tempat Rapat",
+                              "kesimpulan": "Kesimpulan Rapat"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                        bph/&lt;str:divisi_name&gt;/<span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseThirteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama BPH",
+                              "jabatan": "Jabatan BPH"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                        bph/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseFourteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "divisi": 1, 
+                              "nama": "Nama BPH",
+                              "jabatan": "Jabatan BPH"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+                        kelompok/ <span class="badge text-bg-primary mx-3">GET</span> 
+                      </button>
+                    </h2>
+                    <div id="collapseFifteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>No Request Body Needed</strong>
+                      
+                                            </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeventeen" aria-expanded="false" aria-controls="collapseSeventeen">
+                        kelompok/create/ <span class="badge text-bg-success mx-3">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseSeventeen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nomor": 1
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEighteen" aria-expanded="false" aria-controls="collapseEighteen">
+                        kelompok/&lt;int:pk&gt;/delete/ <span class="badge text-bg-danger mx-3">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseEighteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>No Request Body Needed</strong>
+                                          </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNineteen" aria-expanded="false" aria-controls="collapseNineteen">
+                        mentor/&lt;int:no_kelompok&gt;/ <span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseNineteen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Mentor",
+                              "angkatan": 2022,
+                              "jurusan": "Jurusan Mentor",
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyfour" aria-expanded="false" aria-controls="collapseTwentyfour">
+                        mentor/&lt;int:pk&gt;/ <span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwentyfour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Mentor",
+                              "angkatan": 2022,
+                              "jurusan": "Jurusan Mentor",
+                              "kelompok": 1 
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwenty" aria-expanded="false" aria-controls="collapseTwenty">
+                        mentee/ <span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwenty" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Mentee",
+                              "jurusan": "Jurusan Mentee",
+                              "mentor": 1,  
+                              "kelompok": 1  
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentyone" aria-expanded="false" aria-controls="collapseTwentyone">
+                        mentee/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwentyone" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "nama": "Nama Mentee",
+                              "jurusan": "Jurusan Mentee",
+                              "mentor": 1,  // Assuming 1 is the ID of the related Mentor
+                              "kelompok": 1  // Assuming 1 is the ID of the related Kelompok
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentytwo" aria-expanded="false" aria-controls="collapseTwentytwo">
+                        mentoring/<span class="badge text-bg-primary mx-3">GET</span> <span class="badge text-bg-success">POST</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwentytwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>POST Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "kelompok": 1,  // Assuming 1 is the ID of the related Kelompok
+                              "presensi": "Presensi Mentoring",
+                              "materi": "Materi Mentoring"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwentythree" aria-expanded="false" aria-controls="collapseTwentythree">
+                        mentoring/&lt;int:pk&gt;/<span class="badge text-bg-warning mx-3">PUT</span> <span class="badge text-bg-danger">DELETE</span>
+                      </button>
+                    </h2>
+                    <div id="collapseTwentythree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>PUT Request Body</strong>
+                      
+                        <div class="card p-3">
+                          <p>
+                            {
+                              "kelompok": 1,  // Assuming 1 is the ID of the related Kelompok
+                              "presensi": "Presensi Mentoring",
+                              "materi": "Materi Mentoring"
+                          }
+                          
+                          </p>
+                        </div>                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+           
+        </div>
+    </div>
+    
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>
