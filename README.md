@@ -42,3 +42,5 @@ And navigate to `http://127.0.0.1:8000/`.
 There are 2 main features in this application. Those two feateures are API call and API list.
 You can access API call page by pressing the API call button in the home page or by typing `http://127.0.0.1:8000/api-call/` on your website.
 When calling an API, please refer to the documentation profided in API list page. You can access this page by pressing the API list button in the home page or by typing `http://127.0.0.1:8000/api-list/` on your website
+
+*Notes: this program can only be runned in localhost:8000
